@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+   
+    "hf-mcp-server": {
+      "url": "https://huggingface.co/mcp",
+      "headers": {
+        "Authorization": "Bearer hf_"
+      }
+    },
+    "coingecko-stream": {
+      "url": "https://mcp.api.coingecko.com/mcp"
+    },
+    "go-text-tools": {
+      "command": "C:\\Users\\victor.Batou\\go-tools\\go-text-tools.exe",
+      "args": ["HOLA"],
+      "env": {}
+    },
+    "go-hello-server": {
+      "command": "C:\\Users\\victor.Batou\\go-tools\\hello-server.exe"
+    },
+    "go-hello-server2": {
+      "command": "C:\\Users\\victor.Batou\\go-tools\\hello-server2.exe"
+    }
+  }
+}

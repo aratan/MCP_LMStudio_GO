@@ -1,0 +1,37 @@
+package main
+
+import (
+	"context"
+	"fmt"
+	"time"
+
+	"github.com/mark3labs/mcp-go/mcp"
+	"github.com/mark3labs/mcp-go/server"
+)
+
+func main() {
+	// Create a new MCP server
+	s := server.NewMCPServer(
+		"Time Server �",
+		"1.0.0",
+		server.WithToolCapabilities(false),
+	)
+
+	// Add tool
+	tool := mcp.NewTool("get_time",
+		mcp.WithDescription("Get the current time"),
+	)
+
+	// Add tool handler
+	s.AddTool(tool, timeHandler)
+
+	// Start the stdio server
+	if err := server.ServeStdio(s); err != nil {
+		fmt.Printf("Server error: %v\n", err)
+	}
+}
+
+func timeHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	currentTime := time.Now().Format("15:04:05")
+	return mcp.NewToolResultText(fmt.Sprintf("Current time: %s", currentTime)), nil
+}
